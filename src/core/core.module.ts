@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
+import { graphqlConfig } from 'src/config';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       },
       inject: [ConfigService],
     }),
+    GraphQLModule.forRoot(graphqlConfig),
   ],
 })
 export class CoreModule {}
